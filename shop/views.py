@@ -13,11 +13,32 @@ class ProductListView(ListView):
 
 
 class CategoryView(ListView):
-  pass
+  model = Product
+  template_name = 'shop/list.html'
+  context_object_name = 'all_products'
+
+  def get_queryset(self, **kwargs):
+    print(self.kwargs)
+    category_slug = self.kwargs['category_slug']
+    print(category_slug, 'category')
+    products = Product.objects.filter(category__slug__icontains=category_slug)
+    print(products)
+    return products
 
 
 class BrandView(ListView):
-  pass
+  model = Product
+  template_name = 'shop/list.html'
+  context_object_name = 'all_products'
+
+  def get_queryset(self, **kwargs):
+    print(self.kwargs)
+    brand_slug = self.kwargs['brand_slug']
+    print(brand_slug, 'brand')
+    # products = Product.objects.filter(brand__slug__icontains=brand_slug)
+    products2 = Product.objects.all()
+    print(products2)
+    return products2
 
 
 class ProductDetail(DetailView):

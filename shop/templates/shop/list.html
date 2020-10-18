@@ -5,8 +5,8 @@
     {% for product in all_products %}
       <div class="product">
         <div class="header">
-          <p class="category">{{ product.category }}</p>
-          <p class="brand">{{ product.brand }}</p>
+          <p class="category"><a href="{% url 'shop:product_list_by_category' product.category.slug %}">{{ product.category }}</a></p>
+          <p class="brand"><a href="{% url 'shop:product_list_by_brand' product.brand.slug %}">{{ product.brand }}</a></p>
         </div>
         <div class="body">
           <img src="{{ product.image }}" alt="">

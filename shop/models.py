@@ -30,6 +30,9 @@ class Brand(models.Model):
   def __str__(self):
     return self.brand_name
 
+  def get_absolute_url(self):
+    return reverse('shop:product_list_by_brand', args=[self.slug])
+
 
 class Product(models.Model):
   category = models.ForeignKey(Category, related_name='products', on_delete=models.PROTECT)
