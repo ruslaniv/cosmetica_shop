@@ -19,6 +19,8 @@ env = environ.Env(
 )
 environ.Env.read_env()
 
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
 
     # custom apps
     'shop.apps.ShopConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -88,9 +91,7 @@ WSGI_APPLICATION = 'cosmetica_shop.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-         'default': env.db(),
-    }
+    'default': env.db(),
 }
 
 
