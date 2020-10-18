@@ -1,5 +1,6 @@
 from django.views.generic import ListView, DetailView, TemplateView
 from .models import Product
+import _logger
 
 
 class HomeView(TemplateView):
@@ -18,11 +19,11 @@ class CategoryView(ListView):
   context_object_name = 'all_products'
 
   def get_queryset(self, **kwargs):
-    print(self.kwargs)
+    _logger.logger.debug(self.kwargs)
     category_slug = self.kwargs['category_slug']
-    print(category_slug, 'category')
+    _logger.logger.debug(category_slug, 'category')
     products = Product.objects.filter(category__slug__icontains=category_slug)
-    print(products)
+    _logger.logger.debug(products)
     return products
 
 
@@ -32,12 +33,11 @@ class BrandView(ListView):
   context_object_name = 'all_products'
 
   def get_queryset(self, **kwargs):
-    print(self.kwargs)
+    _logger.logger.debug(self.kwargs)
     brand_slug = self.kwargs['brand_slug']
-    print(brand_slug, 'brand')
-    # products = Product.objects.filter(brand__slug__icontains=brand_slug)
-    products2 = Product.objects.all()
-    print(products2)
+    _logger.logger.debug(brand_slug, 'brand')
+    products2 = Product.objects.filter(brand__slug__icontains=brand_slug)
+    _logger.logger.debug(products2)
     return products2
 
 
