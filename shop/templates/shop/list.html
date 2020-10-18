@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <div class="container">
+    {% for product in all_products %}
+      <div class="product">
+        <div class="header">
+          <p class="category">{{ product.category }}</p>
+          <p class="brand">{{ product.brand }}</p>
+        </div>
+        <div class="body">
+          <img src="{{ product.image }}" alt="">
+          <div class="desc">
+            <h1><a href="#">{{ product.product_name }}</a></h1>
+            <p>{{ product.description }}</p>
+          </div>
+        </div>
+        <div class="footer">
+          <div class="stock">
+            {% if product.available %}
+              <p class="available">В наличии</p>
+            {% else %}
+              <p class="unavailable">Нет в наличии</p>
+            {% endif %}
+          </div>
+          <div class="price">{{ product.price }} рублей</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content%}
