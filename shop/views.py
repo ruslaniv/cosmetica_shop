@@ -21,7 +21,7 @@ class CategoryView(ListView):
   def get_queryset(self, **kwargs):
     _logger.logger.debug(self.kwargs)
     category_slug = self.kwargs['category_slug']
-    _logger.logger.debug(category_slug, 'category')
+    _logger.logger.debug(category_slug)
     products = Product.objects.filter(category__slug__icontains=category_slug)
     _logger.logger.debug(products)
     return products
@@ -35,10 +35,10 @@ class BrandView(ListView):
   def get_queryset(self, **kwargs):
     _logger.logger.debug(self.kwargs)
     brand_slug = self.kwargs['brand_slug']
-    _logger.logger.debug(brand_slug, 'brand')
-    products2 = Product.objects.filter(brand__slug__icontains=brand_slug)
-    _logger.logger.debug(products2)
-    return products2
+    _logger.logger.debug(brand_slug)
+    products = Product.objects.filter(brand__slug__icontains=brand_slug)
+    _logger.logger.debug(products)
+    return products
 
 
 class ProductDetail(DetailView):
