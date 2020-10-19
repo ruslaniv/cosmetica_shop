@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Косметиста{% endblock title%}</title>
+    <link href="{% static "css/base-min.css" %}" rel="stylesheet">
+  </head>
+  <body>
+    <header id="main-header">
+      <div id="logo">
+        <a href="/" class="logo">Косметиста</a>
+      </div>
+      <div id="menu">
+        <a href="{% url 'shop:all_product_list'%}">Все продукты</a>
+      </div>
+      <div id="user-header">
+        User
+      </div>
+      <div id="cart-header">
+        <div class="cart">
+          Your cart is empty.
+        </div>
+      </div>
+    </header>
+    <main>
+      {% block content %}
+      {% endblock content%}
+    </main>
+  </body>
+</html>
