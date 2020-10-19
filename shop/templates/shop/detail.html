@@ -1,6 +1,34 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-  {{ product.product_name }}
-  {{ product.brand.slug }}
+  <div class="crumb">
+    <a href="{% url 'shop:product_list_by_category' product.category.slug %}">{{ product.category }}</a> >> <a href="{% url 'shop:product_list_by_brand' product.brand.slug %}">{{ product.brand }}</a>  >> {{ product.product_name }}
+  </div>
+  <div class="container-wide">
+    <div class="product">
+      <div class="header">
+        <p class="category">{{ product.category }}</p>
+        <p class="brand">{{ product.brand }}</p>
+      </div>
+      <div class="body">
+        <img src="{{ product.image.url }}" alt="">
+        <div class="desc">
+          <h1>{{ product.product_name }}</h1>
+          <p>{{ product.description }}</p>
+          <h1>Использование</h1>
+          <p>Нанести на лицо</p>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="stock">
+          {% if product.available %}
+            <p class="available">В наличии</p>
+          {% else %}
+            <p class="unavailable">Нет в наличии</p>
+          {% endif %}
+        </div>
+        <div class="price">{{ product.price }} рублей</div>
+      </div>
+    </div>
+  </div>
 {% endblock content%}

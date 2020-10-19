@@ -21,6 +21,21 @@ header {
   margin: 0 auto;
 }
 
+.container-wide {
+  width: 80%;
+  margin: 0 auto;
+
+  .product .header .brand {
+    text-align: center;
+  }
+
+  .product .body .desc p:first-of-type {
+      padding-bottom: 1.6rem;
+      margin-bottom: 1.6rem;
+      border-bottom: 3px solid hsl(245,77.8%,91.2%);
+    }
+}
+
 .product {
   background-color: hsl(34,77.8%,91.2%);
   margin: 1.6rem;
