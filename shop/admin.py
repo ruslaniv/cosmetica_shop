@@ -16,7 +16,7 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-  list_display = ['product_name', 'brand', 'slug', 'price', 'available', 'created', 'updated']
-  list_filter = ['available', 'created', 'updated']
-  list_editable = ['price', 'available']
+  list_display = ['product_name', 'brand', 'slug', 'price', 'stock', 'created', 'updated']
+  list_filter = ['created', 'updated']
+  list_editable = ['price', 'stock']
   prepopulated_fields = {'slug': ('product_name',)}

@@ -17,7 +17,7 @@
         </div>
         <div class="footer">
           <div class="stock">
-            {% if product.available %}
+            {% if product.stock != 0 %}
               <p class="available">В наличии</p>
             {% else %}
               <p class="unavailable">Нет в наличии</p>
