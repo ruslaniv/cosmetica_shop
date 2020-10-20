@@ -42,12 +42,12 @@
       <tr class="total">
         <td>Всего</td>
         <td colspan="4"></td>
-        <td class="num">${{ cart.get_total_price }}</td>
+        <td class="num">{{ cart.get_total_price }} руб.</td>
       </tr>
     </tbody>
   </table>
   <p class="text-right">
-    <a href="{% url "shop:product_list" %}" class="button-light">Продолжить покупки</a>
+    <a href="{% url "shop:all_product_list" %}" class="button-light">Продолжить покупки</a>
     <a href="#" class="button">Оплатить</a>
   </p>
 {% endblock %}
