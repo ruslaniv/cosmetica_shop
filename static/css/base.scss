@@ -1,3 +1,9 @@
+$text-color: hsl(36,71.4%,2.7%);
+$accent-color: hsl(245, 78%, 91%);
+$background-color: hsl(34,77.8%,91.2%);
+$available-color: hsl(0,100%,32.2%);
+$unavailable-color: hsl(158,96.1%,10%);
+
 *, *:before, *:after {
   box-sizing: border-box;
   padding: 0;
@@ -5,13 +11,13 @@
 }
 
 html {
-    color: hsl(36,71.4%,2.7%);
+    color: $text-color;
     font-size: 62.5%; /* which is approx = 10px, 1.4rem approx = 14px, 1.6rem or 100% or 1em approx = 16px */
     line-height: 1.4;
 }
 
 header {
-  background-color: hsl(245,77.8%,91.2%);
+  background-color: $accent-color;
   font-size: 1.6rem;
   display: flex;
 }
@@ -32,12 +38,12 @@ header {
   .product .body .desc p:first-of-type {
       padding-bottom: 1.6rem;
       margin-bottom: 1.6rem;
-      border-bottom: 3px solid hsl(245,77.8%,91.2%);
+      border-bottom: 3px solid $accent-color;
     }
 }
 
 .product {
-  background-color: hsl(34,77.8%,91.2%);
+  background-color: $background-color;
   margin: 1.6rem;
   .header {
     font-size: 1.6rem * 2;
@@ -45,7 +51,7 @@ header {
     .category {
       text-align: center;
       margin: 1.6rem 0;
-      border-bottom: 3px solid hsl(245,77.8%,91.2%);
+      border-bottom: 3px solid $accent-color;
     }
     .brand {
       margin-bottom: 1.6rem;
@@ -54,15 +60,22 @@ header {
 
   .body {
     display: flex;
+    flex: 0 0 auto;
 
-    img {
-      width: 30%;
+    .image {
+      flex: 0 0 30%;
       margin: 0 1.6rem;
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
     }
     .desc {
       margin: 0 1.6rem;
       a {
-       color: hsl(0, 0%, 13%);
+       color: $text-color;
       }
       p {
         font-size: 1.6rem;
@@ -82,10 +95,10 @@ header {
       font-size: 1.6rem * 1.5;
 
       & .unavailable {
-        border-bottom: 3px solid darkred;
+        border-bottom: 3px solid $available-color;
       }
       & .available {
-        border-bottom: 3px solid darkgreen;
+        border-bottom: 3px solid $unavailable-color;
       }
     }
 
@@ -93,6 +106,65 @@ header {
       margin: 1.6rem;
       font-size: 1.6rem * 1.5;
       font-weight: bold;
+    }
+
+    .buy {
+      margin: 1.6rem;
+      font-size: 1.6rem * 1.5;
+      font-weight: bold;
+
+      input[type=submit] {
+        display: block;
+        margin: 1.6rem auto;
+        padding: 1.6rem * 0.5;
+        font-size: 1.6rem;
+        color: $text-color;
+        background-color: $accent-color;
+        border: 1px solid $text-color;
+        border-radius: 5px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: darken($accent-color, 5);
+        }
+      }
+    }
+  }
+}
+
+table.cart {
+  width: 80%;
+  margin: (1.6rem * 2) auto;
+  background-color: #c5c0f7;
+
+  thead {
+    font-size: 1.6rem * 1.5;
+    text-align: center;
+    background-color: $accent-color;
+  }
+
+  tbody {
+    tr {
+      background-color: $background-color;
+
+      td {
+        padding: 1.6rem * 0.5;
+        text-align: center;
+        font-size: 1.6rem;
+      }
+    }
+
+    img {
+      width: 150px;
+      height: auto;
+      margin: auto;
+      display: block;
+    }
+
+    tr.total td {
+      font-size: 1.6rem * 1.5;
+      font-weight: bolder;
+
     }
   }
 }

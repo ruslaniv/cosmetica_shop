@@ -1,6 +1,7 @@
-from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic import ListView, DetailView, TemplateView, FormView
 from .models import Product
 import _logger
+from cart.forms import CartAddProductForm
 
 
 class HomeView(TemplateView):
@@ -41,6 +42,7 @@ class BrandView(ListView):
     return products
 
 
-class ProductDetail(DetailView):
+class ProductDetail(DetailView, FormView):
   model = Product
+  form_class = CartAddProductForm
   template_name = 'shop/detail.html'
