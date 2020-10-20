@@ -26,8 +26,14 @@
                           {% endif %}" alt="">
               </a>
             </td>
-            <td>{{ product.name }}</td>
-            <td>{{ item.quantity }}</td>
+            <td>{{ product.product_name }}</td>
+            <td>
+              <form action="{% url "cart:cart_add" product.id %}" method="post">
+                {{ item.update_quantity_form.quantity }} {{ item.update_quantity_form.override }}
+                <input type="submit" value="Обновить">
+                {% csrf_token %}
+              </form>
+            </td>
             <td>
               <form action="{% url "cart:cart_remove" product.id %}" method="post">
                 <input type="submit" value="Удалить">
@@ -40,8 +46,7 @@
         {% endwith %}
       {% endfor %}
       <tr class="total">
-        <td>Всего</td>
-        <td colspan="4"></td>
+        <td colspan="5">Всего</td>
         <td class="num">{{ cart.get_total_price }} руб.</td>
       </tr>
     </tbody>

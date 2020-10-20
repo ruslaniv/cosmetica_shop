@@ -9,7 +9,9 @@
           <p class="brand"><a href="{% url 'shop:product_list_by_brand' product.brand.slug %}">{{ product.brand }}</a></p>
         </div>
         <div class="body">
-          <img src="{{ product.image.url }}" alt="">
+          <div class="image">
+            <img src="{{ product.image.url }}" alt="">
+          </div>
           <div class="desc">
             <h1><a href="{% url 'shop:product_detail' product.category.slug product.brand.slug product.slug %}">{{ product.product_name }}</a></h1>
             <p>{{ product.description }}</p>

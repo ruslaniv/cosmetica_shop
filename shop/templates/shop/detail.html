@@ -2,7 +2,10 @@
 {% load static %}
 {% block content %}
   <div class="crumb">
-    <a href="{% url 'shop:product_list_by_category' product.category.slug %}">{{ product.category }}</a> >> <a href="{% url 'shop:product_list_by_brand' product.brand.slug %}">{{ product.brand }}</a>  >> {{ product.product_name }}
+     <a href="{% url 'shop:all_product_list'%}">Все продукты</a> >>
+    <a href="{% url 'shop:product_list_by_category' product.category.slug %}">{{ product.category }}</a> >>
+    <a href="{% url 'shop:product_list_by_brand' product.brand.slug %}">{{ product.brand }}</a>  >>
+    {{ product.product_name }}
   </div>
   <div class="container-wide">
     <div class="product">
@@ -11,7 +14,9 @@
         <p class="brand">{{ product.brand }}</p>
       </div>
       <div class="body">
-        <img src="{{ product.image.url }}" alt="">
+        <div class="image">
+          <img src="{{ product.image.url }}" alt="">
+        </div>
         <div class="desc">
           <h1>{{ product.product_name }}</h1>
           <p>{{ product.description }}</p>
@@ -28,6 +33,14 @@
           {% endif %}
         </div>
         <div class="price">{{ product.price }} рублей</div>
+        <div class="buy">
+           {% if product.stock != 0 %}
+             <form action="{% url "cart:cart_add" product.id %}" method="post">
+               {{ form.as_p }} {% csrf_token %}
+               <input type="submit" value="Добавить в корзину">
+             </form>
+           {% endif %}
+        </div>
       </div>
     </div>
   </div>
