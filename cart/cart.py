@@ -34,15 +34,15 @@ class Cart(object):
   def __iter__(self):  # итератор для отображения полного наименования товара
     product_ids = self.cart.keys()
     products = Product.objects.filter(
-      id__in=product_ids)  # запрос к БД для получения queryset со всеми продуктами в козине
+      id__in=product_ids)  # запрос к БД для получения queryset со всеми продуктами в корзине
 
     cart = self.cart.copy()
     for product in products:
-      cart[str(product.id)]['product'] = product  # создание словара со списком продуктов
+      cart[str(product.id)]['product'] = product  # создание словаря со списком продуктов
 
     for item in cart.values():
       item['price'] = Decimal(item['price'])
-      item['total_price'] = item['price'] * item['quantity']  # расчет общей стоимости однйо товарной позиции
+      item['total_price'] = item['price'] * item['quantity']  # расчет общей стоимости одной товарной позиции
       yield item
 
   def __len__(self):  # кол-во товаров в корзине
