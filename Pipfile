@@ -11,6 +11,8 @@ django = "*"
 psycopg2-binary = "*"
 django-environ = "*"
 pillow = "*"
+celery = "*"
+flower = "*"
 
 [requires]
 python_version = "3.8"
