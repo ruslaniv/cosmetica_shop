@@ -25,7 +25,7 @@ class CustomUserAdmin(DjangoUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2'),
+            'fields': ('email', 'nick', 'password1', 'password2'),
         }),
     )
     ordering = ('email',)
